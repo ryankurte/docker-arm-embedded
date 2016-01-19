@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
   ninja-build \
   python-dev \
   libffi-dev \
-  libssl-dev
+  libssl-dev \
+  software-properties-common \
+  python-software-properties
 
 # arm-none-eabi toolchain
 RUN add-apt-repository ppa:terry.guo/gcc-arm-embedded && \
