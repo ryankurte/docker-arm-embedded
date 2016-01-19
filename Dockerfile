@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   libssl-dev
 
 # arm-none-eabi toolchain
-RUN apt-add-repository ppa:terry.guo/gcc-arm-embedded && \
+RUN add-apt-repository ppa:terry.guo/gcc-arm-embedded && \
   apt-get update && \
   apt-get install -y gcc-arm-none-eabi
 
