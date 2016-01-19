@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y \
   cmake \
   build-essential \
   make \
-  autotools \
   automake
 
 # i386 libc for (some versions of) the toolchain
