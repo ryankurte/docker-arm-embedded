@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y \
   git \
   subversion \
   cmake \
-  build-essential \
   make \
   automake \
   python-setuptools \
@@ -29,4 +28,8 @@ RUN easy_install pip && \
   mkdir -p /usr/local/lib/yotta_modules \
   chown $USER /usr/local/lib/yotta_modules \
   chmod 755 /usr/local/lib/yotta_modules
+
+# Cleanup
+RUN apt-get clean && \
+  rm -rf /var/lib/apt
 
