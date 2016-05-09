@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:trusty
 MAINTAINER Ryan Kurte <ryankurte@gmail.com>
 LABEL Description="Docker image for building arm-embedded projects"
 
