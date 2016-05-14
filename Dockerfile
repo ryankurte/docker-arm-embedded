@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y \
   libffi-dev \
   libssl-dev \
   software-properties-common \
-  python-software-properties
+  python-software-properties \
+  gawk
 
 # arm-none-eabi toolchain
 RUN add-apt-repository ppa:terry.guo/gcc-arm-embedded && \
