@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y \
   libssl-dev \
   software-properties-common \
   python-software-properties \
-  gawk
+  gawk \
+  genromfs \
+  ccache
 
 # arm-none-eabi toolchain
 RUN add-apt-repository ppa:terry.guo/gcc-arm-embedded && \
@@ -29,6 +31,9 @@ RUN easy_install pip && \
   mkdir -p /usr/local/lib/yotta_modules \
   chown $USER /usr/local/lib/yotta_modules \
   chmod 755 /usr/local/lib/yotta_modules
+
+# Pyserial for serial programming
+RUN pip install pyserial
 
 # Cleanup
 RUN apt-get clean && \
