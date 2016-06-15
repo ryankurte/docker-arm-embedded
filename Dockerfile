@@ -18,12 +18,13 @@ RUN apt-get update && apt-get install -y \
   python-software-properties \
   gawk \
   genromfs \
-  ccache
+  ccache \
+  gcc-arm-none-eabi
 
-# arm-none-eabi toolchain
-RUN add-apt-repository ppa:terry.guo/gcc-arm-embedded && \
-  apt-get update && \
-  apt-get install -y gcc-arm-none-eabi
+# arm-none-eabi custom ppa
+#RUN add-apt-repository ppa:team-gcc-arm-embedded/ppa && \
+#  apt-get update && \
+#  apt-get install -y gcc-arm-none-eabi
 
 # Yotta
 RUN easy_install pip && \
