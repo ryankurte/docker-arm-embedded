@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:latest
 MAINTAINER Ryan Kurte <ryankurte@gmail.com>
 LABEL Description="Docker image for building arm-embedded projects"
 
@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
   python-dev \
   libffi-dev \
   libssl-dev \
+  libusb-1.0.0 \
+  libusb-1.0.0-dev \
   software-properties-common \
   python-software-properties \
   gawk \
@@ -35,6 +37,11 @@ RUN easy_install pip && \
 
 # Pyserial for serial programming
 RUN pip install pyserial
+
+# STLink util
+RUN git clone https://github.com/texane/stlink.git && \
+  cd stlink && mkdir build && cd build && \
+  cmake .. && make && make install
 
 # Cleanup
 RUN apt-get clean && \
