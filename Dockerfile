@@ -6,12 +6,16 @@ LABEL Description="Docker image for building arm-embedded projects"
 RUN apt-get update && apt-get install -y \
   git \
   subversion \
+  curl \
   cmake \
   make \
   automake \
+  autoconf \
   python-setuptools \
   ninja-build \
   python-dev \
+  libtool \
+  unzip \
   libffi-dev \
   libssl-dev \
   libusb-1.0.0 \
@@ -20,7 +24,17 @@ RUN apt-get update && apt-get install -y \
   python-software-properties \
   gawk \
   genromfs \
-  ccache
+  ccache \
+  clang \
+  build-essential \
+  python3 \
+  python3-dev \
+  python3-pip \
+  libprotobuf-dev \
+  protobuf-compiler \
+  libprotobuf-c-dev \
+  protobuf-c-compiler \
+  python-protobuf
 
 # arm-none-eabi custom ppa
 RUN add-apt-repository ppa:team-gcc-arm-embedded/ppa && \
