@@ -36,20 +36,25 @@ RUN apt-get update && apt-get install -y \
   protobuf-c-compiler \
   python-protobuf
 
-# arm-none-eabi custom ppa
+# ARM gcc toolchain and custom ppa
 RUN add-apt-repository ppa:team-gcc-arm-embedded/ppa && \
   apt-get update && \
   apt-get install -y gcc-arm-embedded
 
-# Yotta
+# Python tools
 RUN easy_install pip && \
-  pip install yotta && \
-  mkdir -p /usr/local/lib/yotta_modules \
-  chown $USER /usr/local/lib/yotta_modules \
-  chmod 755 /usr/local/lib/yotta_modules
+  pip install mbed-cli && \
+  pip install platformio && \
+  pip install pyserial
 
-# Pyserial for serial programming
-RUN pip install pyserial
+# Rust and arm targets
+RUN curl https://sh.rustup.rs -sSf | \
+    sh -s -- --default-toolchain stable -y && \
+    /root/.cargo/bin/rustup update nightly && \
+    /root/.cargo/bin/rustup target add thumbv7m-none-eabi && \
+    /root/.cargo/bin/rustup target add thumbv7em-none-eabi && \
+    /root/.cargo/bin/rustup target add thumbv7em-none-eabihf
+ENV PATH=/root/.cargo/bin:$PATH
 
 # STLink util
 RUN git clone https://github.com/texane/stlink.git && \
